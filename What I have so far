@@ -1,0 +1,34 @@
+
+#include <Servo.h>
+
+Servo myservo;
+
+
+int ServoPin = 9;
+int SoundInPin = A0;
+
+void setup() {
+  
+ myservo.attach(ServoPin);
+     pinMode(SoundInPin, INPUT);
+}
+
+void loop() {
+
+int sensorValue = analogRead(SoundInPin);
+ sensorValue = map(sensorValue,30,300,0,180);
+  myservo.write(90);
+   int MoveDelayValue = map(sensorValue,0,255,0,sensorValue);
+    if (sensorValue > 70) {
+     delay(15); 
+       myservo.write(sensorValue); 
+         delay(MoveDelayValue); 
+} 
+}
+
+
+
+
+
+
+
